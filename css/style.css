@@ -44,3 +44,7 @@
     position: absolute;
     bottom: 0;
 }
+
+.marginTop {
+    margin-top: 120px;
+}
