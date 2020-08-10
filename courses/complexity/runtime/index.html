@@ -1,0 +1,189 @@
+<!doctype html><html lang=en><head><title>Run Time Analysis | mrparkonline</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css integrity=sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I crossorigin=anonymous><link rel=stylesheet href=/css/style.css></head><body><header class="container-fluid bg-dark"><nav class="navbar navbar-expand-lg navbar-dark"><a class=navbar-brand href=http://mrparkonline.github.io/><img src=/assets/logo/mpo.svg width=42 height=42 class="d-inline-block align-top" alt loading=lazy></a>
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNav aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse justify-content-end" id=navbarNav><ul class=navbar-nav><li class=nav-item><a class="nav-link text-light text-decoration-none" aria-current=page href=/courses/>Courses</a></li></ul></div></nav></header><div class="container mt-3 mb-3" id=site-content><h1 class=display-4>1: Run Time Analysis</h1><hr><br><br><style type=text/css>p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}</style><style type=text/css>.highlight .hll{background-color:#ffc}.highlight{background:#f8f8f8}.highlight .c{color:#408080;font-style:italic}.highlight .err{border:1px solid red}.highlight .k{color:green;font-weight:700}.highlight .o{color:#666}.highlight .ch{color:#408080;font-style:italic}.highlight .cm{color:#408080;font-style:italic}.highlight .cp{color:#bc7a00}.highlight .cpf{color:#408080;font-style:italic}.highlight .c1{color:#408080;font-style:italic}.highlight .cs{color:#408080;font-style:italic}.highlight .gd{color:#a00000}.highlight .ge{font-style:italic}.highlight .gr{color:red}.highlight .gh{color:navy;font-weight:700}.highlight .gi{color:#00a000}.highlight .go{color:#888}.highlight .gp{color:navy;font-weight:700}.highlight .gs{font-weight:700}.highlight .gu{color:purple;font-weight:700}.highlight .gt{color:#04d}.highlight .kc{color:green;font-weight:700}.highlight .kd{color:green;font-weight:700}.highlight .kn{color:green;font-weight:700}.highlight .kp{color:green}.highlight .kr{color:green;font-weight:700}.highlight .kt{color:#b00040}.highlight .m{color:#666}.highlight .s{color:#ba2121}.highlight .na{color:#7d9029}.highlight .nb{color:green}.highlight .nc{color:#00f;font-weight:700}.highlight .no{color:#800}.highlight .nd{color:#a2f}.highlight .ni{color:#999;font-weight:700}.highlight .ne{color:#d2413a;font-weight:700}.highlight .nf{color:#00f}.highlight .nl{color:#a0a000}.highlight .nn{color:#00f;font-weight:700}.highlight .nt{color:green;font-weight:700}.highlight .nv{color:#19177c}.highlight .ow{color:#a2f;font-weight:700}.highlight .w{color:#bbb}.highlight .mb{color:#666}.highlight .mf{color:#666}.highlight .mh{color:#666}.highlight .mi{color:#666}.highlight .mo{color:#666}.highlight .sa{color:#ba2121}.highlight .sb{color:#ba2121}.highlight .sc{color:#ba2121}.highlight .dl{color:#ba2121}.highlight .sd{color:#ba2121;font-style:italic}.highlight .s2{color:#ba2121}.highlight .se{color:#b62;font-weight:700}.highlight .sh{color:#ba2121}.highlight .si{color:#b68;font-weight:700}.highlight .sx{color:green}.highlight .sr{color:#b68}.highlight .s1{color:#ba2121}.highlight .ss{color:#19177c}.highlight .bp{color:green}.highlight .fm{color:#00f}.highlight .vc{color:#19177c}.highlight .vg{color:#19177c}.highlight .vi{color:#19177c}.highlight .vm{color:#19177c}.highlight .il{color:#666}</style><h1 id=runtime-analysis>Runtime Analysis</h1><hr><h2 id=simple-runtime-calculation-with-python-3>Simple Runtime Calculation with Python 3</h2><p>When we are creating a solution for a problem we can be hindered by the efficency of our solution. A more efficient and well optimized code will run and solve the problem much faster than a less efficient code.</p><ul><li>There are mathematical proofs / analysis you can do to your code to see the theoretical classification of your solution. <em>Currently this method is beyond the scope of the course, so we will only learn the classification not the proofs</em></li><li>We will use a built-in python module to help us calculate the runtime of our code.<ul><li>This way we can compare multiple version of a solution if we have any</li><li>We can measure performance based on different parameters and inputs</li><li>This will help us test our code</li><li>More of the library can be found <a href=https://docs.python.org/3/library/timeit.html>here</a></li></ul></li></ul><h3 id=example-problem-most-number-of-factors>Example Problem: Most Number of Factors</h3><p>We will be looking at a simple problem:</p><ul><li>Look at numbers from 1 to N; N being an integer greater than 1.</li><li>Calculate the number of factors of each Ni has</li><li>Output the number that created the largest factor</li></ul><h4 id=method-1>Method 1:</h4><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Most Number of Factors; Method 1</span>
+<span style=color:#75715e># Running a timer once</span>
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>factor_counter</span>(n):
+    <span style=color:#e6db74>&#34;&#34;&#34; factor_counter() determines the number of factors N has &#34;&#34;&#34;</span>
+
+    ctr <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+    <span style=color:#66d9ef>for</span> divisor <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>1</span>,n<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>):
+        <span style=color:#66d9ef>if</span> n <span style=color:#f92672>%</span> divisor <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+            ctr <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+
+    <span style=color:#66d9ef>return</span> ctr
+<span style=color:#75715e># end of factor_counter</span>
+
+<span style=color:#f92672>from</span> timeit <span style=color:#f92672>import</span> default_timer <span style=color:#66d9ef>as</span> timer
+
+start_timer <span style=color:#f92672>=</span> timer() <span style=color:#75715e># Starting the Timer</span>
+
+<span style=color:#75715e># Testing Code</span>
+upper_limit <span style=color:#f92672>=</span> <span style=color:#ae81ff>10000</span>
+max_count <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+result <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+
+<span style=color:#66d9ef>for</span> n <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>1</span>,upper_limit):
+    n_ctr <span style=color:#f92672>=</span> factor_counter(n)
+
+    <span style=color:#66d9ef>if</span> n_ctr <span style=color:#f92672>&gt;</span> max_count:
+        result <span style=color:#f92672>=</span> n
+        max_count <span style=color:#f92672>=</span> n_ctr
+<span style=color:#75715e># Testing Code Finished</span>
+
+end_timer <span style=color:#f92672>=</span> timer() <span style=color:#75715e># Ending the Timer</span>
+
+<span style=color:#75715e># run_time calculation</span>
+run_time <span style=color:#f92672>=</span> end_timer <span style=color:#f92672>-</span> start_timer
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Run Time:&#39;</span>, run_time)
+</code></pre></div><pre><code>Run Time: 4.807014966005227
+</code></pre><h4 id=method-1-starting-a-timer-and-ending-a-timer>Method 1: Starting a timer() and ending a timer()</h4><p>We are taking a function from the <strong>timeit</strong> module called a <strong>default_timer</strong> and called it <strong>timer</strong>.</p><p>When we are about the test the runtime of our code. We are going to section off the execution portion of the code.</p><ul><li>At the beginning, we will <em>&lsquo;start&rsquo;</em> the timer &mldr; timestamp of when the code started</li><li>At the end, we will <em>&lsquo;end&rsquo;</em> the timer .. timestamp of when the code ended</li><li>We can calculate the run time by subtracting the end time and start time</li></ul><p>In this example, the program took abour 4.8 seconds for analyzing 1 to 10,000.</p><h4 id=method-2>Method 2:</h4><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Most Number of Factors; Method 2</span>
+<span style=color:#75715e># Average Execution Calculation ... little more messy</span>
+
+testing_code <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;&#39;&#39;
+</span><span style=color:#e6db74>def factor_counter(n):
+</span><span style=color:#e6db74>    &#34;&#34;&#34; factor_counter() determines the number of factors N has &#34;&#34;&#34;
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>    ctr = 0
+</span><span style=color:#e6db74>    for divisor in range(1,n+1):
+</span><span style=color:#e6db74>        if n </span><span style=color:#e6db74>% d</span><span style=color:#e6db74>ivisor == 0:
+</span><span style=color:#e6db74>            ctr += 1
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>    return ctr
+</span><span style=color:#e6db74># end of factor_counter
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>upper_limit = 10000
+</span><span style=color:#e6db74>max_count = 0
+</span><span style=color:#e6db74>result = 0
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>for n in range(1,upper_limit):
+</span><span style=color:#e6db74>    n_ctr = factor_counter(n)
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>    if n_ctr &gt; max_count:
+</span><span style=color:#e6db74>        result = n
+</span><span style=color:#e6db74>        max_count = n_ctr
+</span><span style=color:#e6db74>&#39;&#39;&#39;</span>
+
+<span style=color:#f92672>import</span> timeit <span style=color:#f92672>as</span> t
+
+<span style=color:#75715e># run_time calculation</span>
+run_time <span style=color:#f92672>=</span> t<span style=color:#f92672>.</span>timeit(testing_code, number<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span>) <span style=color:#f92672>/</span> <span style=color:#ae81ff>10</span>
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Run Time:&#39;</span>, run_time)
+</code></pre></div><pre><code>Run Time: 4.35833643010119
+</code></pre><h4 id=method-2-using-timeit>Method 2: Using timeit()</h4><p>In this method, we are using the <strong>timeit()</strong> function from the <em>timeit</em> module.</p><p>To lessen the confusion, we renamed the name module as &rsquo;t&rsquo; like so:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> timeit <span style=color:#f92672>as</span> t<span style=color:#e6db74>``</span><span style=color:#960050;background-color:#1e0010>`</span>
+
+<span style=color:#f92672>-</span> <span style=color:#f92672>**</span>_testing code_<span style=color:#f92672>**</span> ; holds the lines of code we are testing <span style=color:#66d9ef>as</span> a long string variable (hence the messiness<span style=color:#960050;background-color:#1e0010>!</span>)
+<span style=color:#f92672>-</span> <span style=color:#f92672>**</span>_number<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span>_<span style=color:#f92672>**</span> ; we are specifying how many times to test our code by setting a built<span style=color:#f92672>-</span><span style=color:#f92672>in</span> argument called _number_
+<span style=color:#f92672>-</span> <span style=color:#f92672>**</span>_<span style=color:#f92672>/</span><span style=color:#ae81ff>10</span>_<span style=color:#f92672>**</span> ; we divide it by <span style=color:#ae81ff>10</span> because the result of timeit <span style=color:#f92672>is</span> <span style=color:#f92672>is</span> the total sum of the number of times we ran the code
+
+[Source](https:<span style=color:#f92672>//</span>pythonhow<span style=color:#f92672>.</span>com<span style=color:#f92672>/</span>measure<span style=color:#f92672>-</span>execution<span style=color:#f92672>-</span>time<span style=color:#f92672>-</span>python<span style=color:#f92672>-</span>code<span style=color:#f92672>/</span>)
+
+<span style=color:#75715e>## Refactoring</span>
+
+<span style=color:#f92672>**</span>Unit:<span style=color:#f92672>**</span> A segment of a program that handles a problem<span style=color:#960050;background-color:#1e0010>’</span>s specific requirement<span style=color:#f92672>.</span>
+
+<span style=color:#f92672>**</span>Refactoring:<span style=color:#f92672>**</span> The act of improving the performance <span style=color:#f92672>and</span> efficiency of the unit (section of a program) without affecting input <span style=color:#f92672>and</span> the output of the unit<span style=color:#f92672>.</span>
+
+If a program <span style=color:#f92672>is</span> simplified to its Input <span style=color:#960050;background-color:#1e0010>→</span> Processing <span style=color:#960050;background-color:#1e0010>→</span> Output, then we are trying to optimize the <span style=color:#960050;background-color:#1e0010>“</span>Processing<span style=color:#960050;background-color:#1e0010>”</span> section of the program by Refactoring<span style=color:#f92672>.</span>
+
+<span style=color:#75715e>### Refactoring: Most Number of Factors</span>
+
+<span style=color:#f92672>**</span>Unit to Refactor:<span style=color:#f92672>**</span>
+<span style=color:#e6db74>``</span><span style=color:#960050;background-color:#1e0010>`</span>python
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>factor_counter</span>(n):
+    <span style=color:#e6db74>&#34;&#34;&#34; factor_counter() determines the number of factors N has &#34;&#34;&#34;</span>
+
+    ctr <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+    <span style=color:#66d9ef>for</span> divisor <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>1</span>,n<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>):
+        <span style=color:#66d9ef>if</span> n <span style=color:#f92672>%</span> divisor <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+            ctr <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+
+    <span style=color:#66d9ef>return</span> ctr
+<span style=color:#75715e># end of factor_counter</span>
+</code></pre></div><ul><li>This code is not the most efficient one, and we will make some optimizations to help it run faster.<ul><li>A product of a number is pair of factors; therefore N = A * B where A and B are factors of N</li><li>If A is a Factor of N, then we can calculate B by N / A. This helps us a find two factors at once.</li><li>This way we also need to iterate our for loop only up to the Square Root of N.<ul><li>If N is a perfect square, we can increase our count by 1 to denote that Square Root of N is a factor.</li></ul></li><li>Yes, there are even more optimizations that can be done&mldr;</li></ul></li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Refactored Most Number of Factor Counter Solution</span>
+<span style=color:#75715e># Average Execution Calculation</span>
+
+testing_code <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;&#39;&#39;
+</span><span style=color:#e6db74>def factor_counter(n):
+</span><span style=color:#e6db74>    &#34;&#34;&#34; factor_counter() determines the number of factors N has &#34;&#34;&#34;
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>    ctr = 0
+</span><span style=color:#e6db74>    if n &lt; 9:
+</span><span style=color:#e6db74>        # difference of speed between the optimized and non-optimized is very minimial on small numbers
+</span><span style=color:#e6db74>        for divisor in range(1,n+1):
+</span><span style=color:#e6db74>            if n </span><span style=color:#e6db74>% d</span><span style=color:#e6db74>ivisor == 0:
+</span><span style=color:#e6db74>                ctr += 1
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>        return ctr
+</span><span style=color:#e6db74>    else:
+</span><span style=color:#e6db74>        end_point = int(n**0.5) + 1
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>        for divisor in range(1, end_point):
+</span><span style=color:#e6db74>            if n </span><span style=color:#e6db74>% d</span><span style=color:#e6db74>ivisor == 0 and (n // divisor) != divisor:
+</span><span style=color:#e6db74>                ctr += 2
+</span><span style=color:#e6db74>            elif n </span><span style=color:#e6db74>% d</span><span style=color:#e6db74>ivisor == 0 and (n // divisor) == divisor:
+</span><span style=color:#e6db74>                ctr += 1
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>    return ctr
+</span><span style=color:#e6db74># end of factor_counter
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>upper_limit = 10000
+</span><span style=color:#e6db74>max_count = 0
+</span><span style=color:#e6db74>result = 0
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>for n in range(1,upper_limit):
+</span><span style=color:#e6db74>    n_ctr = factor_counter(n)
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>    if n_ctr &gt; max_count:
+</span><span style=color:#e6db74>        result = n
+</span><span style=color:#e6db74>        max_count = n_ctr
+</span><span style=color:#e6db74>&#39;&#39;&#39;</span>
+
+<span style=color:#f92672>import</span> timeit <span style=color:#f92672>as</span> t
+
+<span style=color:#75715e># run_time calculation</span>
+run_time <span style=color:#f92672>=</span> t<span style=color:#f92672>.</span>timeit(testing_code, number<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span>) <span style=color:#f92672>/</span> <span style=color:#ae81ff>10</span>
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Run Time:&#39;</span>, run_time)
+</code></pre></div><pre><code>Run Time: 0.10893374489969573
+</code></pre><h3 id=notes>Notes:</h3><ul><li>Our runtime of the solution went from an average of 4.4 seconds to 0.11 seconds</li><li>This was achieve by very minor optimization steps that made us create dramatic changes</li><li>Please understand that the function <strong>factor_counter()</strong> did not changes its <strong>inputs</strong> nor <strong>outputs</strong></li></ul><p><strong>Optimized Code:</strong></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>factor_counter</span>(n):
+    <span style=color:#e6db74>&#34;&#34;&#34; factor_counter() determines the number of factors N has &#34;&#34;&#34;</span>
+
+    ctr <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+    <span style=color:#66d9ef>if</span> n <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>9</span>:
+        <span style=color:#75715e># difference of speed between the optimized and non-optimized is very minimial on small numbers</span>
+        <span style=color:#66d9ef>for</span> divisor <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>1</span>,n<span style=color:#f92672>+</span><span style=color:#ae81ff>1</span>):
+            <span style=color:#66d9ef>if</span> n <span style=color:#f92672>%</span> divisor <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+                ctr <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+
+        <span style=color:#66d9ef>return</span> ctr
+    <span style=color:#66d9ef>else</span>:
+        end_point <span style=color:#f92672>=</span> int(n<span style=color:#f92672>**</span><span style=color:#ae81ff>0.5</span>) <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>
+
+        <span style=color:#66d9ef>for</span> divisor <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>1</span>, end_point):
+            <span style=color:#66d9ef>if</span> n <span style=color:#f92672>%</span> divisor <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>and</span> (n <span style=color:#f92672>//</span> divisor) <span style=color:#f92672>!=</span> divisor:
+                ctr <span style=color:#f92672>+=</span> <span style=color:#ae81ff>2</span>
+            <span style=color:#66d9ef>elif</span> n <span style=color:#f92672>%</span> divisor <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span> <span style=color:#f92672>and</span> (n <span style=color:#f92672>//</span> divisor) <span style=color:#f92672>==</span> divisor:
+                ctr <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+
+    <span style=color:#66d9ef>return</span> ctr
+</code></pre></div><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script><script type=text/x-mathjax-config>
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            // Center justify equations in code and markdown cells. Elsewhere
+            // we use CSS to left justify single line equations in code cells.
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+    </script></div><footer class="container-fluid text-center text-light bg-dark marginTop" id=site-footer><head><script src=https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js integrity=sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo crossorigin=anonymous></script><script src=https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js integrity=sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/ crossorigin=anonymous></script><link rel=manifest href=/site.webmanifest><script async src="https://www.googletagmanager.com/gtag/js?id=UA-133276379-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','UA-133276379-1');</script></head><span>&copy; 2020 <a href=https://www.linkedin.com/in/mrparkonline/ target=_blank class="link-light text-decoration-none">Jasper J Park</a></span></footer></body></html>

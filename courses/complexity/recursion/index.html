@@ -1,0 +1,120 @@
+<!doctype html><html lang=en><head><title>Recursion | mrparkonline</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css integrity=sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I crossorigin=anonymous><link rel=stylesheet href=/css/style.css></head><body><header class="container-fluid bg-dark"><nav class="navbar navbar-expand-lg navbar-dark"><a class=navbar-brand href=http://mrparkonline.github.io/><img src=/assets/logo/mpo.svg width=42 height=42 class="d-inline-block align-top" alt loading=lazy></a>
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNav aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse justify-content-end" id=navbarNav><ul class=navbar-nav><li class=nav-item><a class="nav-link text-light text-decoration-none" aria-current=page href=/courses/>Courses</a></li></ul></div></nav></header><div class="container mt-3 mb-3" id=site-content><h1 class=display-4>4: Recursion</h1><hr><br><br><style type=text/css>p,blockquote,ul,ol,dl,li,table,pre{margin:15px 0}table{padding:0}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}</style><style type=text/css>.highlight .hll{background-color:#ffc}.highlight{background:#f8f8f8}.highlight .c{color:#408080;font-style:italic}.highlight .err{border:1px solid red}.highlight .k{color:green;font-weight:700}.highlight .o{color:#666}.highlight .ch{color:#408080;font-style:italic}.highlight .cm{color:#408080;font-style:italic}.highlight .cp{color:#bc7a00}.highlight .cpf{color:#408080;font-style:italic}.highlight .c1{color:#408080;font-style:italic}.highlight .cs{color:#408080;font-style:italic}.highlight .gd{color:#a00000}.highlight .ge{font-style:italic}.highlight .gr{color:red}.highlight .gh{color:navy;font-weight:700}.highlight .gi{color:#00a000}.highlight .go{color:#888}.highlight .gp{color:navy;font-weight:700}.highlight .gs{font-weight:700}.highlight .gu{color:purple;font-weight:700}.highlight .gt{color:#04d}.highlight .kc{color:green;font-weight:700}.highlight .kd{color:green;font-weight:700}.highlight .kn{color:green;font-weight:700}.highlight .kp{color:green}.highlight .kr{color:green;font-weight:700}.highlight .kt{color:#b00040}.highlight .m{color:#666}.highlight .s{color:#ba2121}.highlight .na{color:#7d9029}.highlight .nb{color:green}.highlight .nc{color:#00f;font-weight:700}.highlight .no{color:#800}.highlight .nd{color:#a2f}.highlight .ni{color:#999;font-weight:700}.highlight .ne{color:#d2413a;font-weight:700}.highlight .nf{color:#00f}.highlight .nl{color:#a0a000}.highlight .nn{color:#00f;font-weight:700}.highlight .nt{color:green;font-weight:700}.highlight .nv{color:#19177c}.highlight .ow{color:#a2f;font-weight:700}.highlight .w{color:#bbb}.highlight .mb{color:#666}.highlight .mf{color:#666}.highlight .mh{color:#666}.highlight .mi{color:#666}.highlight .mo{color:#666}.highlight .sa{color:#ba2121}.highlight .sb{color:#ba2121}.highlight .sc{color:#ba2121}.highlight .dl{color:#ba2121}.highlight .sd{color:#ba2121;font-style:italic}.highlight .s2{color:#ba2121}.highlight .se{color:#b62;font-weight:700}.highlight .sh{color:#ba2121}.highlight .si{color:#b68;font-weight:700}.highlight .sx{color:green}.highlight .sr{color:#b68}.highlight .s1{color:#ba2121}.highlight .ss{color:#19177c}.highlight .bp{color:green}.highlight .fm{color:#00f}.highlight .vc{color:#19177c}.highlight .vg{color:#19177c}.highlight .vi{color:#19177c}.highlight .vm{color:#19177c}.highlight .il{color:#666}</style><h1 id=recursion>Recursion</h1><hr><p><strong>Recursion:</strong> a method to solve computational problem by relying on smaller instances of a solution to a given problem.</p><p>The logic is that if we have a base case that helps to solves the smaller instance, then the base case solution helps to solve the bigger version of the solution.</p><p>*<em>Example of a common recursive function: Fibonacci Number</em></p><p>$fib(n)= fib(n-1) + fib(n-2)$</p><p>$fib(0) = 0$</p><p>$fib(1) = 1$</p><table><thead><tr><th>n</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr></thead><tbody><tr><td>fib(n)</td><td>0</td><td>1</td><td>1</td><td>2</td><td>3</td><td>5</td><td>8</td><td>13</td><td>21</td><td>34</td><td>55</td></tr></tbody></table><p>Fibonacci numbers are derived from its past instances. The next value in the fibonacci number sequence is always the sum of the last two values of the sequence. Hence, the fibonacci number sequence is a <em>recurrence relation</em>.</p><p>In the function statements above, the n value determines the location of the sequence. Some groups ignore 0th fibonacci number all together; however, we will be keeping it for our definition sake.</p><p>Here is the fibonacci number function in Python:</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Fibonacci Function</span>
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fibonacci</span>(n):
+    <span style=color:#66d9ef>if</span> n <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>
+    <span style=color:#66d9ef>elif</span> n <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>:
+        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>
+    <span style=color:#66d9ef>else</span>:
+        <span style=color:#66d9ef>return</span> fibonacci(n<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>) <span style=color:#f92672>+</span> fibonacci(n<span style=color:#f92672>-</span><span style=color:#ae81ff>2</span>)
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=0, fib:&#39;</span>, fibonacci(<span style=color:#ae81ff>0</span>))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=1, fib:&#39;</span>, fibonacci(<span style=color:#ae81ff>1</span>))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=2, fib:&#39;</span>, fibonacci(<span style=color:#ae81ff>2</span>))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=4, fib:&#39;</span>, fibonacci(<span style=color:#ae81ff>4</span>))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=7, fib:&#39;</span>, fibonacci(<span style=color:#ae81ff>7</span>))
+</code></pre></div><pre><code>n=0, fib: 0
+n=1, fib: 1
+n=2, fib: 1
+n=4, fib: 3
+n=7, fib: 13
+</code></pre><p><strong>Note</strong></p><pre><code>- This should be our very first time seeing an instance where we return a *function call*
+- The original fibonacci(n) is determined by the calculation of fibonacci(n-1) and fibonacci(n-2)
+- This will continously occur until we meet the condition of either n == 0 or n == 1
+</code></pre><h2 id=basic-idea-of-recursion>Basic Idea of Recursion</h2><p>Let P be a problem:</p><ul><li>Divide P into two or more subproblems (smaller instances)</li><li>Divide until the subproblems are simple enough to be solved</li><li>All the subproblem solutions are then combined to give a solution to the original problem</li><li>This is a basic program solving approach called: <strong>“<a href=https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm>Divide and Conquer Algorithms</a>”</strong></li></ul><p><em>This also leads to the basis of “<a href=https://en.wikipedia.org/wiki/Dynamic_programming>Dynamic Programming</a>”</em></p><h2 id=how-to-design-a-recursive-function>How to Design a Recursive Function</h2><p><strong>Recipe</strong>: All recursive algorithms must have the following:</p><ol><li><strong>Base Case</strong> (i.e., when to stop; the simplest solution of the problem)</li><li><strong>Work toward Base Case:</strong> where we make the problem simpler/smaller towards the base case</li><li>Recursive Call (i.e., call ourselves)</li></ol><p><strong>How does it work?</strong></p><ul><li>In a recursive algorithm, the computer &ldquo;remembers&rdquo; every previous state of the problem.</li><li>This information is &ldquo;held&rdquo; by the computer on the &ldquo;activation stack&rdquo; (i.e., inside of each functions workspace).</li><li>Every function has its own workspace PER CALL of the function.</li><li>Once all the recursive calls are complete, we get our first function call&rsquo;s answer/result</li></ul><p><strong>Importance of a basecase</strong></p><p>The base case should hold the simplest solution for the simplest, smallest instance of the problem.</p><p><em>Base Case:</em> In a recursion algorithm, the problem is broken down to subproblem until we reach the base case.</p><ul><li>Recursion Algorithms can have multiple base cases</li><li>Base cases are considered “end conditions”</li></ul><h2 id=example-problem-adding-all-values-from-n-to-1>Example Problem: Adding all values from N to 1.</h2><ul><li>Let N be an integer value greater than 1</li><li>recursive_sum(n) will add all values from N to 1</li></ul><p><strong>Base Case:</strong></p><pre><code>N of 0: 0, no calculation needed
+N of 1: 1, no calculation needed
+</code></pre><p><strong>For all other N</strong></p><pre><code>The sum of all numbers below N is N + the recursive_sum of N-1; therefore:
+
+recursive_sum(n) = n + recursive_sum(n-1)
+
+This solution is classified as O(n).
+</code></pre><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Recursive Sum</span>
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>recursive_sum</span>(n):
+    <span style=color:#66d9ef>if</span> n <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>
+    <span style=color:#66d9ef>elif</span> n <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span>:
+        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>1</span>
+    <span style=color:#66d9ef>else</span>:
+        <span style=color:#66d9ef>return</span> n <span style=color:#f92672>+</span> recursive_sum(n<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>)
+<span style=color:#75715e># end of recursive_sum</span>
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=1, result:&#39;</span>, recursive_sum(<span style=color:#ae81ff>1</span>))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=2, result:&#39;</span>, recursive_sum(<span style=color:#ae81ff>2</span>))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=4, result:&#39;</span>, recursive_sum(<span style=color:#ae81ff>4</span>))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=5, result:&#39;</span>, recursive_sum(<span style=color:#ae81ff>5</span>))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=7, result:&#39;</span>, recursive_sum(<span style=color:#ae81ff>7</span>))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=11, result:&#39;</span>, recursive_sum(<span style=color:#ae81ff>11</span>))
+</code></pre></div><pre><code>n=1, result: 1
+n=2, result: 3
+n=4, result: 10
+n=5, result: 15
+n=7, result: 28
+n=11, result: 66
+</code></pre><pre><code>Recursive Sum Execution Summary
+
+recursive_sum(5) → 5 + recursive_sum(4)
+    recursive_sum(4) → 4 + recursive_sum(3)
+        recursive_sum(3) → 3 + recursive_sum(2)
+            recursive_sum(2) → 2 + recursive_sum(1)
+                recursive_sum(1) → returns 1
+
+            recursive_sum(2) → 2 + 1 = 3
+        recursive_sum(3) → 3 + 3 = 6
+    recursive_sum(4) → 4 + 6
+recursive_sum(5) → 5 + 10
+
+recursive_sum(5) returns 15
+</code></pre><h2 id=different-typesproperties-of-recursion>Different Types/Properties of Recursion</h2><h3 id=single-vs-multiple-recursion>Single vs Multiple Recursion</h3><p><strong>Single</strong>: It only calls itself once … only invokes one recursion to occur</p><pre><code>recursive_sum(n) = n + recursive_sum(n-1)
+</code></pre><p><strong>Multiple</strong>: It can invoke multiple recursion to solve the answer</p><pre><code>fibonacci(n) = fibonacci(n-2) + fibonacci(n-1)
+</code></pre><h3 id=direct-vs-indirect-recursion>Direct vs Indirect Recursion</h3><pre><code>let f and g both be functions
+</code></pre><p><strong>Direct</strong>: function f only calls f</p><pre><code>f(x) = f(x-1)
+</code></pre><p><strong>Indirect</strong>: function f calls g and function g calls function f; hence, indirectly recursive calls</p><ul><li>If there are more than 2 functions, we can create longer indirect chains</li><li>Some texts will define indirect recursion as mutal recursions</li></ul><pre><code>f(x) = g(x) ; g(x) = f(x)
+</code></pre><h2 id=non-tail-recursion-vs-tail-recursion>Non-Tail Recursion vs Tail Recursion</h2><p><strong>Non-Tail Recursion:</strong> For this recursion to finish, it must wait for all its recursive function calls to finish their activation stack&rsquo;s execution.</p><p><strong>Tail Recursion:</strong> The function call is the last thing that a function does. For this recursion to finish, we return a tail because we are affecting the value of the tail at every recursion.</p><p>Tail Recursion is more efficient in terms of memory because it only does calculations at the very last recursive call.</p><p>If you have the chance to write a tail recursion, you should write a tail recursion.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Tail Recursive N to 1 summation</span>
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>tail_recursive_sum</span>(n, tail<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>):
+    <span style=color:#66d9ef>if</span> n <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+        <span style=color:#66d9ef>return</span> tail <span style=color:#75715e># we will be modifying this argument with our recursive calls</span>
+    <span style=color:#66d9ef>else</span>:
+        <span style=color:#66d9ef>return</span> tail_recursive_sum(n<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, tail<span style=color:#f92672>+</span>n)
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=1, result:&#39;</span>, tail_recursive_sum(<span style=color:#ae81ff>1</span>))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=2, result:&#39;</span>, tail_recursive_sum(<span style=color:#ae81ff>2</span>))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=4, result:&#39;</span>, tail_recursive_sum(<span style=color:#ae81ff>4</span>))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=5, result:&#39;</span>, tail_recursive_sum(<span style=color:#ae81ff>5</span>))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=7, result:&#39;</span>, tail_recursive_sum(<span style=color:#ae81ff>7</span>))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;n=11, result:&#39;</span>, tail_recursive_sum(<span style=color:#ae81ff>11</span>))
+</code></pre></div><pre><code>n=1, result: 1
+n=2, result: 3
+n=4, result: 10
+n=5, result: 15
+n=7, result: 28
+n=11, result: 66
+</code></pre><pre><code>Tail Recursive Sum Execution Summary
+
+tail_recursive_sum(5) → tail_recursive_sum(4, 0+5)
+    tail_recursive_sum(4,5) → tail_recursive_sum(3, 5+4)
+        tail_recursive_sum(3,9) → 3 + tail_recursive_sum(2, 9+3)
+            tail_recursive_sum(2,12) → 2 + recursive_sum(1, 12+2)
+                tail_recursive_sum(1, 14) → recursive_sum(0, 14+1)
+                    tail_recursive_sum(0, 15) → returns 15 end of recursive call
+
+</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script><script type=text/x-mathjax-config>
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            // Center justify equations in code and markdown cells. Elsewhere
+            // we use CSS to left justify single line equations in code cells.
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+    </script></div><footer class="container-fluid text-center text-light bg-dark marginTop" id=site-footer><head><script src=https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js integrity=sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo crossorigin=anonymous></script><script src=https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js integrity=sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/ crossorigin=anonymous></script><link rel=manifest href=/site.webmanifest><script async src="https://www.googletagmanager.com/gtag/js?id=UA-133276379-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','UA-133276379-1');</script></head><span>&copy; 2020 <a href=https://www.linkedin.com/in/mrparkonline/ target=_blank class="link-light text-decoration-none">Jasper J Park</a></span></footer></body></html>
