@@ -48,3 +48,7 @@
 .marginTop {
     margin-top: 120px;
 }
+
+code {
+    padding-left: 4px;
+}

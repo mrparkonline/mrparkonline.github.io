@@ -1,0 +1,122 @@
+<!doctype html><html lang=en><head><title>Tuples | mrparkonline</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css integrity=sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I crossorigin=anonymous><link rel=stylesheet href=/css/style.css></head><body><header class="container-fluid bg-dark"><nav class="navbar navbar-expand-lg navbar-dark"><a class=navbar-brand href=http://mrparkonline.github.io/><img src=/assets/logo/mpo.svg width=42 height=42 class="d-inline-block align-top" alt loading=lazy></a>
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNav aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse justify-content-end" id=navbarNav><ul class=navbar-nav><li class=nav-item><a class="nav-link text-light text-decoration-none" aria-current=page href=/courses/>Courses</a></li></ul></div></nav></header><div class="container mt-3 mb-3" id=site-content><h1 class=display-4>Tuples</h1><p class=text-secondary><small>Monday, Jan 1, 0001</small></p><hr><br><h1 id=tuples-in-python-3>Tuples in Python 3</h1><hr><h2 id=what-are-tuples>What are Tuples?</h2><p>Strings and Lists are basic iterable data types that are very similar with key differences:</p><ul><li>Strings only allow alphanumeric characters and special symbols to represent text</li><li>Lists allow all data types as its items/members</li><li>Strings are immutable whereas Lists are mutable</li></ul><p>These significant differences cause a headache when you require the following data structure:</p><ul><li>It must be immutable</li><li>It must allow different datatypes as items</li><li>It must be iterable</li><li>It must be nestable (much like a list within a list)</li></ul><p><strong>All of these are solved</strong> with a data structure called: <strong>Tuple</strong>.</p><h2 id=how-to-use-tuples-in-python-3>How to use Tuples in Python 3</h2><ul><li>Tuples are declared with parenthesis &mldr; aka round brackets</li><li>() is an empty tuple</li><li>(50,) is a singleton tuple; the comma is required</li><li>Tuples are sliceable; therefore, indexable using square brackets</li></ul><p><em>A singleton is an iterable data structure with only single item</em>.</p><h3 id=tuple-example-1>Tuple Example 1</h3><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>tup <span style=color:#f92672>=</span> (<span style=color:#e6db74>&#39;C&#39;</span>, <span style=color:#e6db74>&#39; Java&#39;</span>, <span style=color:#e6db74>&#39;Python&#39;</span>)
+empty_tup <span style=color:#f92672>=</span> ()
+single_tup <span style=color:#f92672>=</span> (<span style=color:#e6db74>&#39;Park&#39;</span>,)
+
+<span style=color:#66d9ef>print</span>(tup)
+<span style=color:#66d9ef>print</span>(empty_tup)
+<span style=color:#66d9ef>print</span>(single_tup)
+</code></pre></div><pre><code>('C', ' Java', 'Python')
+()
+('Park',)
+</code></pre><h2 id=tuple-operators>Tuple Operators</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Concatenation: Joining two tuples</span>
+a <span style=color:#f92672>=</span> (<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>)
+b <span style=color:#f92672>=</span> (<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>)
+concat_result <span style=color:#f92672>=</span> a <span style=color:#f92672>+</span> b
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;a+b:&#39;</span>, concat_result)
+
+
+<span style=color:#75715e># Repetition: Repeating a list multiple times</span>
+c <span style=color:#f92672>=</span> (<span style=color:#e6db74>&#39;Hi!&#39;</span>,)
+repet_result <span style=color:#f92672>=</span> c <span style=color:#f92672>*</span> <span style=color:#ae81ff>3</span>
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;c*3&#39;</span>, repet_result)
+
+<span style=color:#75715e># Membership: Check if a value exists in a tuple</span>
+d <span style=color:#f92672>=</span> a <span style=color:#f92672>+</span> b <span style=color:#f92672>+</span> c
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;d:&#39;</span>, d)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74>Hi!</span><span style=color:#ae81ff>\&#39;</span><span style=color:#e6db74> in d:&#39;</span>, <span style=color:#e6db74>&#39;Hi!&#39;</span> <span style=color:#f92672>in</span> d)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;7 in d:&#39;</span>, <span style=color:#ae81ff>7</span> <span style=color:#f92672>in</span> d)
+</code></pre></div><pre><code>a+b: (1, 2, 3, 4, 5, 6)
+c*3 ('Hi!', 'Hi!', 'Hi!')
+d: (1, 2, 3, 4, 5, 6, 'Hi!')
+'Hi!' in d: True
+7 in d: False
+</code></pre><h2 id=tuples-are-iterable-indexable-and-sliceable>Tuples are Iterable, Indexable, and Sliceable</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Iteration</span>
+example <span style=color:#f92672>=</span> (<span style=color:#e6db74>&#39;C&#39;</span>, <span style=color:#e6db74>&#39;Java&#39;</span>, <span style=color:#e6db74>&#39;Python&#39;</span>, <span style=color:#e6db74>&#39;C#&#39;</span>, <span style=color:#e6db74>&#39;JavaScript&#39;</span>)
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Tuple example items:&#39;</span>)
+<span style=color:#66d9ef>for</span> language <span style=color:#f92672>in</span> example:
+    <span style=color:#66d9ef>print</span>(language)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;--&#39;</span>)
+
+<span style=color:#75715e># Indexing</span>
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Index 1:&#39;</span>, example[<span style=color:#ae81ff>1</span>])
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Last Value:&#39;</span>, example[<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
+
+<span style=color:#75715e># Slicing</span>
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Backwards:&#39;</span>, example[::<span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>])
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Every other:&#39;</span>, example[::<span style=color:#ae81ff>2</span>])
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;From 1 to end:&#39;</span>, example[<span style=color:#ae81ff>1</span>:])
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;From 1 to 3:&#39;</span>, example[<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>3</span>])
+</code></pre></div><pre><code>Tuple example items:
+C
+Java
+Python
+C#
+JavaScript
+--
+Index 1: Java
+Last Value: JavaScript
+Backwards: ('JavaScript', 'C#', 'Python', 'Java', 'C')
+Every other: ('C', 'Python', 'JavaScript')
+From 1 to end: ('Java', 'Python', 'C#', 'JavaScript')
+From 1 to 3: ('Java', 'Python')
+</code></pre><h2 id=built-in-functions-with-tuple>Built-in Functions with Tuple</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>example <span style=color:#f92672>=</span> (<span style=color:#e6db74>&#39;C&#39;</span>, <span style=color:#e6db74>&#39;Java&#39;</span>, <span style=color:#e6db74>&#39;Python&#39;</span>, <span style=color:#e6db74>&#39;C#&#39;</span>, <span style=color:#e6db74>&#39;JavaScript&#39;</span>)
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Length:&#39;</span>, len(example))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Minimum value:&#39;</span>, min(example))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Maximum value:&#39;</span>, max(example))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;--&#39;</span>)
+
+word <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;Hello&#39;</span>
+array <span style=color:#f92672>=</span> [<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>,<span style=color:#ae81ff>4</span>]
+array_array <span style=color:#f92672>=</span> [[<span style=color:#ae81ff>1</span>],[<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>],[<span style=color:#ae81ff>4</span>]]
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;String to Tuple:&#39;</span>, tuple(word))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;List to Tuple:&#39;</span>, tuple(array))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;2D array to Tuple:&#39;</span>, tuple(array_array))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;--&#39;</span>)
+
+array_array[<span style=color:#ae81ff>0</span>][<span style=color:#ae81ff>0</span>] <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;p&#39;</span>
+<span style=color:#66d9ef>print</span>(array_array)
+
+<span style=color:#75715e># Note: don&#39;t have mutable data type as items in a tuple ...</span>
+</code></pre></div><pre><code>Length: 5
+Minimum value: C
+Maximum value: Python
+--
+String to Tuple: ('H', 'e', 'l', 'l', 'o')
+List to Tuple: (1, 2, 3, 4)
+2D array to Tuple: ([1], [2, 3], [4])
+--
+[['p'], [2, 3], [4]]
+</code></pre><h2 id=tuple-comprehension>Tuple Comprehension</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Tuple of Even values from 1 to 100</span>
+even_tup <span style=color:#f92672>=</span> tuple(i <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>101</span>) <span style=color:#66d9ef>if</span> i <span style=color:#f92672>%</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>)
+
+<span style=color:#66d9ef>print</span>(even_tup)
+</code></pre></div><pre><code>(2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100)
+</code></pre><p>The parentheses were taken for a different functionality in python; therefore, we have to do comprehension like this.</p><p>The general format is the exactly the same as list comprehension.</p><h2 id=tuple--python-packing-and-unpacking>Tuple & Python: Packing and Unpacking</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Examine the following code</span>
+
+<span style=color:#75715e># Packing</span>
+var_1 <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>
+var_2 <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>
+var_3 <span style=color:#f92672>=</span> <span style=color:#ae81ff>5</span>
+
+prime <span style=color:#f92672>=</span> var_1, var_2, var_3
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Packed prime values:&#39;</span>, prime)
+
+<span style=color:#75715e># Unpacking and Repacking</span>
+fib <span style=color:#f92672>=</span> (<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>8</span>)
+
+fib_0, fib_1, fib_n <span style=color:#f92672>=</span> fib[<span style=color:#ae81ff>0</span>], fib[<span style=color:#ae81ff>1</span>], fib[<span style=color:#ae81ff>2</span>:]
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;fib_0:&#39;</span>, fib_0)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;fib_1:&#39;</span>, fib_1)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;fib_n:&#39;</span>, fib_n)
+</code></pre></div><pre><code>Packed prime values: (2, 3, 5)
+fib_0: 0
+fib_1: 1
+fib_n: (1, 2, 3, 5, 8)
+</code></pre><p><strong>Explanation:</strong></p><ul><li>Packing collect multiple variable&rsquo;s values and assign it to a single variable</li><li>Unpacking help us assign certain values from a tuple to different variables</li><li>This becomes very useful skill when combined with variable arguments for Function Definition and Function Calls</li></ul></div><footer class="container-fluid text-center text-light bg-dark marginTop" id=site-footer><head><script src=https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js integrity=sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo crossorigin=anonymous></script><script src=https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js integrity=sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/ crossorigin=anonymous></script><link rel=manifest href=/site.webmanifest><script async src="https://www.googletagmanager.com/gtag/js?id=UA-133276379-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','UA-133276379-1');</script></head><span>&copy; 2020 <a href=https://www.linkedin.com/in/mrparkonline/ target=_blank class="link-light text-decoration-none">Jasper J Park</a></span></footer></body></html>
