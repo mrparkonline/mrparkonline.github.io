@@ -1,0 +1,69 @@
+<!doctype html><html lang=en><head><title>Input and Type Conversions | mrparkonline</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="With inputs we can further enhance our program's usability. | Author: Jasper J Park"><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css integrity=sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I crossorigin=anonymous><link rel=stylesheet href=/css/style.css></head><body><header class="container-fluid bg-dark"><nav class="navbar navbar-expand-lg navbar-dark"><a class=navbar-brand href=http://mrparkonline.github.io/><img src=/assets/logo/mpo.svg width=42 height=42 class="d-inline-block align-top" alt loading=lazy></a>
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNav aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse justify-content-end" id=navbarNav><ul class=navbar-nav><li class=nav-item><a class="nav-link text-light text-decoration-none" aria-current=page href=/courses/>Courses</a></li></ul></div></nav></header><div class="container mt-3 mb-3" id=site-content><h1 class=display-4>Lesson 4: Input and Type Conversions</h1><p class=lead>With inputs we can further enhance our program's usability.</p><hr><nav aria-label=breadcrumb><ol class="breadcrumb border border-light bg-transparent"><li class=breadcrumb-item><a href=http://mrparkonline.github.io/courses/ class="link-info text-decoration-none">Courses</a></li><li class=breadcrumb-item><a href=http://mrparkonline.github.io/courses/basics/ class="link-info text-decoration-none">Python Basics</a></li></ol></nav><style type=text/css>#site-content>.card>.card-body img{width:auto;max-width:100%;height:auto}table{padding:0;margin-top:12px;margin-bottom:12px}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}.highlight .hll{background-color:#ffc}.highlight{background:#f8f8f8}.highlight .c{color:#408080;font-style:italic}.highlight .err{border:1px solid red}.highlight .k{color:green;font-weight:700}.highlight .o{color:#666}.highlight .ch{color:#408080;font-style:italic}.highlight .cm{color:#408080;font-style:italic}.highlight .cp{color:#bc7a00}.highlight .cpf{color:#408080;font-style:italic}.highlight .c1{color:#408080;font-style:italic}.highlight .cs{color:#408080;font-style:italic}.highlight .gd{color:#a00000}.highlight .ge{font-style:italic}.highlight .gr{color:red}.highlight .gh{color:navy;font-weight:700}.highlight .gi{color:#00a000}.highlight .go{color:#888}.highlight .gp{color:navy;font-weight:700}.highlight .gs{font-weight:700}.highlight .gu{color:purple;font-weight:700}.highlight .gt{color:#04d}.highlight .kc{color:green;font-weight:700}.highlight .kd{color:green;font-weight:700}.highlight .kn{color:green;font-weight:700}.highlight .kp{color:green}.highlight .kr{color:green;font-weight:700}.highlight .kt{color:#b00040}.highlight .m{color:#666}.highlight .s{color:#ba2121}.highlight .na{color:#7d9029}.highlight .nb{color:green}.highlight .nc{color:#00f;font-weight:700}.highlight .no{color:#800}.highlight .nd{color:#a2f}.highlight .ni{color:#999;font-weight:700}.highlight .ne{color:#d2413a;font-weight:700}.highlight .nf{color:#00f}.highlight .nl{color:#a0a000}.highlight .nn{color:#00f;font-weight:700}.highlight .nt{color:green;font-weight:700}.highlight .nv{color:#19177c}.highlight .ow{color:#a2f;font-weight:700}.highlight .w{color:#bbb}.highlight .mb{color:#666}.highlight .mf{color:#666}.highlight .mh{color:#666}.highlight .mi{color:#666}.highlight .mo{color:#666}.highlight .sa{color:#ba2121}.highlight .sb{color:#ba2121}.highlight .sc{color:#ba2121}.highlight .dl{color:#ba2121}.highlight .sd{color:#ba2121;font-style:italic}.highlight .s2{color:#ba2121}.highlight .se{color:#b62;font-weight:700}.highlight .sh{color:#ba2121}.highlight .si{color:#b68;font-weight:700}.highlight .sx{color:green}.highlight .sr{color:#b68}.highlight .s1{color:#ba2121}.highlight .ss{color:#19177c}.highlight .bp{color:green}.highlight .fm{color:#00f}.highlight .vc{color:#19177c}.highlight .vg{color:#19177c}.highlight .vi{color:#19177c}.highlight .vm{color:#19177c}.highlight .il{color:#666}</style><div class="card shadow" style=overflow-x:auto><div class=card-body style=overflow-x:auto><h1 id=input-and-type-conversions>Input and Type Conversions</h1><hr><p>To allow users to interact with our program via keyboard, we need a way to read inputs from it.</p><h2 id=input-built-in-function><code>input()</code> built-in function</h2><ul><li><code>input()</code> is a built-in function that is able to grab input from the console when typed from the keyboard by the user</li><li>The <strong>input()</strong> function will always read its data as a string data typed value</li></ul><p>Let&rsquo;s see an example.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Our example program</span>
+
+first_name <span style=color:#f92672>=</span> input(<span style=color:#e6db74>&#39;Enter your first name: &#39;</span>)
+last_name <span style=color:#f92672>=</span> input(<span style=color:#e6db74>&#39;Enter your last name: &#39;</span>)
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Hello,&#39;</span>, first_name, last_name)
+</code></pre></div><pre><code>Enter your first name: Mr.
+Enter your last name: Park
+Hello, Mr. Park
+</code></pre><ul><li>Since we are grabbing data with input, it should be assigned to variables<ul><li>first_name has been assigned with the user input of &ldquo;Mr.&rdquo;</li><li>last_name has been assigned with the user input of &ldquo;Park&rdquo;</li></ul></li><li>the <code>input()</code> can contain a string message/argument inside to display when running the code<ul><li>For our example, the argument was &ldquo;Enter your first name: " for the first input</li></ul></li><li>After the input is finished, the variable now contains the values inputted which we printed</li></ul><h2 id=type-conversion-functions>Type Conversion Functions</h2><p>Since <code>input()</code> only reads data as string data typed values, we are going to need a way to convert them to numeric data types for different scenarios.</p><p>These functions will produce an error if they cannot convert the argument to their targetted data type.</p><p>Example: <code>int('hello world')</code> will produce an error &mldr; &lsquo;hello world&rsquo; is not an integer.</p><h4 id=int-function><code>int()</code> function</h4><p>This function allows us to the convert given argument into an integer.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>string_three <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;3&#34;</span>
+integer_three <span style=color:#f92672>=</span> int(string_three) <span style=color:#75715e># now integer_three contains an integer of 3</span>
+
+<span style=color:#66d9ef>print</span>(integer_three <span style=color:#f92672>+</span> <span style=color:#ae81ff>3</span>) <span style=color:#75715e># should be 6</span>
+<span style=color:#66d9ef>print</span>(string_three <span style=color:#f92672>+</span> <span style=color:#ae81ff>3</span>) <span style=color:#75715e># an error because a string of 3 cannot add an integer of 3</span>
+</code></pre></div><pre><code>6
+
+
+
+---------------------------------------------------------------------------
+
+TypeError                                 Traceback (most recent call last)
+
+&lt;ipython-input-2-c6a3c3a9a014&gt; in &lt;module&gt;
+      3
+      4 print(integer_three + 3) # should be 6
+----&gt; 5 print(string_three + 3) # an error because a string of 3 cannot add an integer of 3
+
+
+TypeError: can only concatenate str (not &quot;int&quot;) to str
+</code></pre><h4 id=float-function><code>float()</code> function</h4><p>This function allow us to convert the given argument into a floating point value.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>string_pi <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;3.14&#34;</span>
+float_pi <span style=color:#f92672>=</span> float(string_pi)
+
+integer_three <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>
+float_three <span style=color:#f92672>=</span> float(integer_three)
+
+<span style=color:#66d9ef>print</span>(float_pi)
+<span style=color:#66d9ef>print</span>(float_three)
+</code></pre></div><pre><code>3.14
+3.0
+</code></pre><h4 id=str-function><code>str()</code> function</h4><p>This function allow us to convert non-string typed value back into a string.</p><p><em>This function may seem silly now; it will be very important in the future unit.</em></p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>num1 <span style=color:#f92672>=</span> <span style=color:#ae81ff>42</span>
+num2 <span style=color:#f92672>=</span> <span style=color:#ae81ff>3.14159</span>
+
+str_num1 <span style=color:#f92672>=</span> str(num1)
+str_num2 <span style=color:#f92672>=</span> str(num2)
+
+<span style=color:#66d9ef>print</span>(str_num1)
+<span style=color:#66d9ef>print</span>(str_num2)
+</code></pre></div><pre><code>42
+3.14159
+</code></pre></div></div><br><nav aria-label="Page navigation"><ul class=pagination><li class=page-item><a class="page-link link-info" title="Previous page in courses" href=http://mrparkonline.github.io/courses/basics/2dataandvariables/>&lt;&lt; Previous Lesson</a></li><li class=page-item><a class="page-link link-info" title="Next page in courses" href=http://mrparkonline.github.io/courses/basics/4basicarithmeticinpython/>Next Lesson >></a></li></ul></nav><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script><script type=text/x-mathjax-config>
+            MathJax.Hub.Config({
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                // Center justify equations in code and markdown cells. Elsewhere
+                // we use CSS to left justify single line equations in code cells.
+                displayAlign: 'center',
+                "HTML-CSS": {
+                    styles: {'.MathJax_Display': {"margin": 0}},
+                    linebreaks: { automatic: true }
+                }
+            });
+        </script></div><footer class="container-fluid text-center text-light bg-dark marginTop" id=site-footer><head><script async defer src=https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js integrity=sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo crossorigin=anonymous></script><script async defer src=https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js integrity=sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/ crossorigin=anonymous></script><link rel=manifest href=/site.webmanifest><script async src="https://www.googletagmanager.com/gtag/js?id=UA-133276379-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','UA-133276379-1');</script></head><span>&copy; 2020 <a href=https://www.linkedin.com/in/mrparkonline/ rel=noreferrer target=_blank class="link-light text-decoration-none">Jasper J Park</a></span></footer></body></html>
