@@ -1,0 +1,124 @@
+<!doctype html><html lang=en><head><title>Modules | mrparkonline</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Learning how to use the Math and Random Modules in my Python 3 program. | Author: Jasper J Park"><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css integrity=sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I crossorigin=anonymous><link rel=stylesheet href=/css/style.css></head><body><header class="container-fluid bg-dark"><nav class="navbar navbar-expand-lg navbar-dark"><a class=navbar-brand href=http://mrparkonline.github.io/><img src=/assets/logo/mpo.svg width=42 height=42 class="d-inline-block align-top" alt loading=lazy></a>
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNav aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse justify-content-end" id=navbarNav><ul class=navbar-nav><li class=nav-item><a class="nav-link text-light text-decoration-none" aria-current=page href=/courses/>Courses</a></li></ul></div></nav></header><div class="container mt-3 mb-3" id=site-content><h1 class=display-4>Lesson 7: Modules</h1><p class=lead>Learning how to use the Math and Random Modules in my Python 3 program.</p><hr><nav aria-label=breadcrumb><ol class="breadcrumb border border-light bg-transparent"><li class=breadcrumb-item><a href=http://mrparkonline.github.io/courses/ class="link-info text-decoration-none">Courses</a></li><li class=breadcrumb-item><a href=http://mrparkonline.github.io/courses/basics/ class="link-info text-decoration-none">Python Basics</a></li></ol></nav><style type=text/css>#site-content>.card>.card-body img{width:auto;max-width:100%;height:auto}pre,code{padding:4px}table{padding:0;margin-top:12px;margin-bottom:12px}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}.highlight .hll{background-color:#ffc}.highlight{background:#f8f8f8}.highlight .c{color:#408080;font-style:italic}.highlight .err{border:1px solid red}.highlight .k{color:green;font-weight:700}.highlight .o{color:#666}.highlight .ch{color:#408080;font-style:italic}.highlight .cm{color:#408080;font-style:italic}.highlight .cp{color:#bc7a00}.highlight .cpf{color:#408080;font-style:italic}.highlight .c1{color:#408080;font-style:italic}.highlight .cs{color:#408080;font-style:italic}.highlight .gd{color:#a00000}.highlight .ge{font-style:italic}.highlight .gr{color:red}.highlight .gh{color:navy;font-weight:700}.highlight .gi{color:#00a000}.highlight .go{color:#888}.highlight .gp{color:navy;font-weight:700}.highlight .gs{font-weight:700}.highlight .gu{color:purple;font-weight:700}.highlight .gt{color:#04d}.highlight .kc{color:green;font-weight:700}.highlight .kd{color:green;font-weight:700}.highlight .kn{color:green;font-weight:700}.highlight .kp{color:green}.highlight .kr{color:green;font-weight:700}.highlight .kt{color:#b00040}.highlight .m{color:#666}.highlight .s{color:#ba2121}.highlight .na{color:#7d9029}.highlight .nb{color:green}.highlight .nc{color:#00f;font-weight:700}.highlight .no{color:#800}.highlight .nd{color:#a2f}.highlight .ni{color:#999;font-weight:700}.highlight .ne{color:#d2413a;font-weight:700}.highlight .nf{color:#00f}.highlight .nl{color:#a0a000}.highlight .nn{color:#00f;font-weight:700}.highlight .nt{color:green;font-weight:700}.highlight .nv{color:#19177c}.highlight .ow{color:#a2f;font-weight:700}.highlight .w{color:#bbb}.highlight .mb{color:#666}.highlight .mf{color:#666}.highlight .mh{color:#666}.highlight .mi{color:#666}.highlight .mo{color:#666}.highlight .sa{color:#ba2121}.highlight .sb{color:#ba2121}.highlight .sc{color:#ba2121}.highlight .dl{color:#ba2121}.highlight .sd{color:#ba2121;font-style:italic}.highlight .s2{color:#ba2121}.highlight .se{color:#b62;font-weight:700}.highlight .sh{color:#ba2121}.highlight .si{color:#b68;font-weight:700}.highlight .sx{color:green}.highlight .sr{color:#b68}.highlight .s1{color:#ba2121}.highlight .ss{color:#19177c}.highlight .bp{color:green}.highlight .fm{color:#00f}.highlight .vc{color:#19177c}.highlight .vg{color:#19177c}.highlight .vi{color:#19177c}.highlight .vm{color:#19177c}.highlight .il{color:#666}</style><div class="card shadow" style=overflow-x:auto><div class=card-body style=overflow-x:auto><h1 id=modules>Modules</h1><hr><p>Modules are collection of code that is available for us to call upon when needed. This helps us program while not reinventing the wheel.</p><h3 id=what-are-modules>What are Modules?</h3><p>A module is a Python code with a sole purpose that it exists to:</p><ul><li>Group related code</li><li>Extend the capabilities of your current Python code by importing it to your own code</li><li>Avoid creating solutions that already exist</li></ul><p>The two modules that we will focus on will be: <strong>math</strong> and <strong>random</strong>.</p><p>There are a lot modules that exists beyond what Python 3 offers (pandas and plotly to name a few). These can be installed to your computer.</p><h3 id=special-keywords>Special Keywords</h3><p>To use any modules, we need the following 3 keywords:</p><ul><li><code>import</code></li><li><code>from</code></li><li><code>as</code></li></ul><h3 id=math-module><code>math</code> module</h3><p>The math module allow us to access more built-in functions to access some mathematical functions that basic python does not include.</p><p>You can find the entire offering of the math module <a href=https://docs.python.org/3/library/math.html>here</a>.</p><pre><code>    math.ceil(x) → rounds up the parameter x to its closest integer
+    math.floor(x) → rounds down the parameter x to its closest integer
+    math.fabs(x) → returns the absolute (non-negative) value of x
+    math.factorial(x) → returns the calculation of x factorial (x!)
+    math.gcd(a,b) → returns the greatest common divisor of parameters a and b
+    math.log(x) → returns the natural log (ln) of x
+    math.log2(x) → returns the base 2 log of x
+    math.log10(x) → returns the base 10 log of x
+    math.pow(x,y) → returns to power of x to the exponent of y
+    math.sqrt(x) → returns the square root of x
+    math.sin(x) → returns the sine of x
+    math.cos(x) → returns the cosine of x
+    math.tan(x) → returns the tangent of x
+    math.asin(x) → returns the arc sine of x
+    math.acos(x) → returns the arc cosine of x
+    math.atan(x) → returns the arc tangent of x
+    math.degrees(x) → returns the conversion of x radians to degrees
+    math.radians(x) → returns the conversion of x degrees to radians
+</code></pre><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Math Module Example</span>
+<span style=color:#75715e># Just using only the import statement</span>
+
+<span style=color:#f92672>import</span> math <span style=color:#75715e># this gives access to the entire module</span>
+
+<span style=color:#75715e># to use any of the functions seen above, we need the &#34;math.&#34; prefix</span>
+
+<span style=color:#75715e># Greatest common divider</span>
+a <span style=color:#f92672>=</span> <span style=color:#ae81ff>144</span>
+b <span style=color:#f92672>=</span> <span style=color:#ae81ff>252</span>
+
+result <span style=color:#f92672>=</span> math<span style=color:#f92672>.</span>gcd(a,b)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;The GCD of&#39;</span>, a, <span style=color:#e6db74>&#39;and&#39;</span>, b, <span style=color:#e6db74>&#39;is:&#39;</span>, result)
+</code></pre></div><pre><code>The GCD of 144 and 252 is: 36
+</code></pre><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Math Module Example 2</span>
+<span style=color:#75715e># Using from ... import ... as</span>
+<span style=color:#75715e># from allow us to target a single function/item from our importing module</span>
+<span style=color:#75715e># as allow us to rename the imported function</span>
+
+<span style=color:#f92672>from</span> math <span style=color:#f92672>import</span> sqrt <span style=color:#66d9ef>as</span> squareRoot <span style=color:#75715e># we have now only imported square root function and renamed it</span>
+<span style=color:#75715e># this way, we don&#39;t need the &#39;math.&#39; prefix</span>
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;The square root of 25 is:&#39;</span>, squareRoot(<span style=color:#ae81ff>25</span>))
+</code></pre></div><pre><code>The square root of 25 is: 5.0
+</code></pre><h3 id=random-module><code>random</code> module</h3><p>The random module is a way to add random-like functionality to our code. Generation of random number is very fun way concept especially in game development.</p><p>You can find the entire offering of the random module <a href=https://docs.python.org/3/library/random.html>here</a>.</p><pre><code>
+random.seed(x) → the parameter x (an integer) is optional …
+
+    The seed function exists to help us generate a more predictable randomness.
+    If the seed() is given an integer, the program will generate the random same number every time.
+
+random.random() → This function requires no parameters.
+    Every time this function is called, it will generate a random float from 0.0 inclusively to 1.0 exclusively
+
+random.randrange(a,b,c) → This function helps to generate random numbers, it will behave differently based on the number of arguments
+
+    random.randrange(x) → Generates random integers from 0 to x, but not including x
+
+    random.randrange(a,b) → Generates random integers from a to b, but not including b
+
+    random.randrange(a,b,c) → Generates random integers from a to b; not including b, and
+    the available values will be a set of values from parameter a increasing by parameter c
+
+
+random.randint(a,b) → Behaves the same way as random.randrange(a,b+1)
+
+random.choice(sequence) → Returns a random value from the parameter sequence
+    if the sequence is a string → returns a single character
+    if the sequence is a list → returns a single item
+
+</code></pre><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Example ... just using random()</span>
+
+<span style=color:#f92672>import</span> random
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Random number generated:&#39;</span>, random<span style=color:#f92672>.</span>random())
+
+<span style=color:#75715e># Whenever this program runs, it should generate a new random floating point value</span>
+</code></pre></div><pre><code>Random number generated: 0.15972819314209852
+</code></pre><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Example 2</span>
+<span style=color:#75715e># Using randrange to generate random integers</span>
+
+<span style=color:#f92672>from</span> random <span style=color:#f92672>import</span> randrange <span style=color:#75715e># if you like what the function is called, as statement is not required</span>
+
+value1 <span style=color:#f92672>=</span> randrange(<span style=color:#ae81ff>10</span>) <span style=color:#75715e># Value 1 now contains a random value from 0 to 9 inclusively</span>
+value2 <span style=color:#f92672>=</span> randrange(<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>101</span>) <span style=color:#75715e># Value 2 now contains a random value from 1 to 100 inclusively</span>
+
+value3 <span style=color:#f92672>=</span> randrange(<span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>1000</span>, <span style=color:#ae81ff>3</span>)
+<span style=color:#75715e># Value 3 now contains a random value of X such that the list of numbers to choose from goes from 10 to 1000</span>
+<span style=color:#75715e># However, the interval between each number is 3 units away</span>
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;value1:&#39;</span>, value1)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;value2:&#39;</span>, value2)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;value3:&#39;</span>, value3)
+</code></pre></div><pre><code>value1: 2
+value2: 52
+value3: 490
+</code></pre><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Example 3</span>
+<span style=color:#75715e># Using choice</span>
+
+<span style=color:#f92672>from</span> random <span style=color:#f92672>import</span> choice
+
+word <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;The Lazy Dog sleeps in his crate.&#39;</span>
+array <span style=color:#f92672>=</span> [<span style=color:#e6db74>&#39;Oranges&#39;</span>, <span style=color:#e6db74>&#39;Watermelons&#39;</span>, <span style=color:#e6db74>&#39;Apples&#39;</span>, <span style=color:#e6db74>&#39;Kiwis&#39;</span>, <span style=color:#e6db74>&#39;Bananas&#39;</span>]
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Random letter from word:&#39;</span>, choice(word))
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;Random item from array:&#39;</span>, choice(array))
+</code></pre></div><pre><code>Random letter from word: a
+Random item from array: Watermelons
+</code></pre></div></div><br><nav aria-label="Page navigation"><ul class=pagination><li class=page-item><a class="page-link link-info" title="Previous page in courses" href=http://mrparkonline.github.io/courses/basics/6usefulfunctions/>&lt;&lt; Previous Lesson</a></li></ul></nav><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script><script type=text/x-mathjax-config>
+            MathJax.Hub.Config({
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                // Center justify equations in code and markdown cells. Elsewhere
+                // we use CSS to left justify single line equations in code cells.
+                displayAlign: 'center',
+                "HTML-CSS": {
+                    styles: {'.MathJax_Display': {"margin": 0}},
+                    linebreaks: { automatic: true }
+                }
+            });
+        </script></div><footer class="container-fluid text-center text-light bg-dark marginTop" id=site-footer><head><script async defer src=https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js integrity=sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo crossorigin=anonymous></script><script async defer src=https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js integrity=sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/ crossorigin=anonymous></script><link rel=manifest href=/site.webmanifest><script async src="https://www.googletagmanager.com/gtag/js?id=UA-133276379-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','UA-133276379-1');</script></head><span>&copy; 2020 <a href=https://www.linkedin.com/in/mrparkonline/ rel=noreferrer target=_blank class="link-light text-decoration-none">Jasper J Park</a></span></footer></body></html>
