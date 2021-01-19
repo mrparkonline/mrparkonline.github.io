@@ -1,0 +1,113 @@
+<!doctype html><html lang=en><head><title>Basic String Methods | mrparkonline</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Learning the basic string methods that we can use. | Author: Jasper J Park"><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css integrity=sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I crossorigin=anonymous><link rel=stylesheet href=/css/style.css></head><body><header class="container-fluid bg-dark"><nav class="navbar navbar-expand-lg navbar-dark"><a class=navbar-brand href=http://mrparkonline.github.io/><img src=/assets/logo/mpo.svg width=42 height=42 class="d-inline-block align-top" alt loading=lazy></a>
+<button class=navbar-toggler type=button data-toggle=collapse data-target=#navbarNav aria-controls=navbarNav aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse justify-content-end" id=navbarNav><ul class=navbar-nav><li class=nav-item><a class="nav-link text-light text-decoration-none" aria-current=page href=/courses/>Courses</a></li></ul></div></nav></header><div class="container mt-3 mb-3" id=site-content><h1 class=display-4>Lesson 0: Basic String Methods</h1><p class=lead>Learning the basic string methods that we can use.</p><hr><nav aria-label=breadcrumb><ol class="breadcrumb border border-light bg-transparent"><li class=breadcrumb-item><a href=http://mrparkonline.github.io/courses/ class="link-info text-decoration-none">Courses</a></li><li class=breadcrumb-item><a href=http://mrparkonline.github.io/courses/strings/ class="link-info text-decoration-none">Strings</a></li></ol></nav><style type=text/css>#site-content>.card>.card-body img{width:auto;max-width:100%;height:auto}pre,code{padding:4px}table{padding:0;margin-top:12px;margin-bottom:12px}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0}table tr:nth-child(2n){background-color:#f8f8f8}table tr th{font-weight:700;border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px}table tr th :first-child,table tr td :first-child{margin-top:0}table tr th :last-child,table tr td :last-child{margin-bottom:0}.highlight .hll{background-color:#ffc}.highlight{background:#f8f8f8}.highlight .c{color:#408080;font-style:italic}.highlight .err{border:1px solid red}.highlight .k{color:green;font-weight:700}.highlight .o{color:#666}.highlight .ch{color:#408080;font-style:italic}.highlight .cm{color:#408080;font-style:italic}.highlight .cp{color:#bc7a00}.highlight .cpf{color:#408080;font-style:italic}.highlight .c1{color:#408080;font-style:italic}.highlight .cs{color:#408080;font-style:italic}.highlight .gd{color:#a00000}.highlight .ge{font-style:italic}.highlight .gr{color:red}.highlight .gh{color:navy;font-weight:700}.highlight .gi{color:#00a000}.highlight .go{color:#888}.highlight .gp{color:navy;font-weight:700}.highlight .gs{font-weight:700}.highlight .gu{color:purple;font-weight:700}.highlight .gt{color:#04d}.highlight .kc{color:green;font-weight:700}.highlight .kd{color:green;font-weight:700}.highlight .kn{color:green;font-weight:700}.highlight .kp{color:green}.highlight .kr{color:green;font-weight:700}.highlight .kt{color:#b00040}.highlight .m{color:#666}.highlight .s{color:#ba2121}.highlight .na{color:#7d9029}.highlight .nb{color:green}.highlight .nc{color:#00f;font-weight:700}.highlight .no{color:#800}.highlight .nd{color:#a2f}.highlight .ni{color:#999;font-weight:700}.highlight .ne{color:#d2413a;font-weight:700}.highlight .nf{color:#00f}.highlight .nl{color:#a0a000}.highlight .nn{color:#00f;font-weight:700}.highlight .nt{color:green;font-weight:700}.highlight .nv{color:#19177c}.highlight .ow{color:#a2f;font-weight:700}.highlight .w{color:#bbb}.highlight .mb{color:#666}.highlight .mf{color:#666}.highlight .mh{color:#666}.highlight .mi{color:#666}.highlight .mo{color:#666}.highlight .sa{color:#ba2121}.highlight .sb{color:#ba2121}.highlight .sc{color:#ba2121}.highlight .dl{color:#ba2121}.highlight .sd{color:#ba2121;font-style:italic}.highlight .s2{color:#ba2121}.highlight .se{color:#b62;font-weight:700}.highlight .sh{color:#ba2121}.highlight .si{color:#b68;font-weight:700}.highlight .sx{color:green}.highlight .sr{color:#b68}.highlight .s1{color:#ba2121}.highlight .ss{color:#19177c}.highlight .bp{color:green}.highlight .fm{color:#00f}.highlight .vc{color:#19177c}.highlight .vg{color:#19177c}.highlight .vi{color:#19177c}.highlight .vm{color:#19177c}.highlight .il{color:#666}</style><div class="card shadow" style=overflow-x:auto><div class=card-body style=overflow-x:auto><h1 id=basic-string-methods>Basic String Methods</h1><hr><p>In this lesson, we will be looking a string methods that deal with searching, checking the status, and editing strings.</p><p>This is <strong>not an exhaustive list</strong> of all methods with strings. You check out the list of methods <a href=https://docs.python.org/3/library/stdtypes.html#string-methods>here</a>.</p><p><strong>Methods:</strong> set of code belonging to a certain data/object</p><ul><li>String and List data types have special methods only for them</li><li>Usually, we need a period before the method name to use them</li></ul><pre><code>Example:
+
+print('Hello {}!'.format('World'))
+
+.format() is a string method!
+</code></pre><p><strong>Return:</strong> certain methods and functions have the ability to return a value/result after its operations</p><ul><li>This is useful when we <strong>assign the result to a variable</strong></li><li>Built-in functions like: <code>len(), max(), min(), int(), float()</code> all return a new value so that we can assign the result to a variable or update an existing variable</li></ul><h3 id=search-related-methods>Search Related Methods</h3><p><em>Recall:</em> Index starts at 0</p><p><strong><code>string_data.count(_str_arg_)</code></strong></p><ul><li>Returns how many time the string argument occurs in the given variable</li></ul><p><strong><code>string_data.find(_str_arg_)</code></strong></p><ul><li>Returns the location of where the string argument was found. If not found, returns -1</li></ul><p><strong><code>string_data.index(_str_arg_)</code></strong></p><ul><li>Same as find(), but raises an <a href="https://www.tutorialspoint.com/python3/python_exceptions.htm#:~:text=In%20general%2C%20when%20a%20Python,otherwise%20it%20terminates%20and%20quits.">exception</a> if str not found.</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Search Related Methods Examples</span>
+
+example <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;hello world!&#39;</span>
+result_1 <span style=color:#f92672>=</span> example<span style=color:#f92672>.</span>count(<span style=color:#e6db74>&#39;e&#39;</span>) <span style=color:#75715e># is 1</span>
+result_2 <span style=color:#f92672>=</span> example<span style=color:#f92672>.</span>count(<span style=color:#e6db74>&#39;l&#39;</span>) <span style=color:#75715e># (single lowercase L) is 3</span>
+result_3 <span style=color:#f92672>=</span> example<span style=color:#f92672>.</span>count(<span style=color:#e6db74>&#39;ll&#39;</span>) <span style=color:#75715e># (double lowercase L) is 1</span>
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;result_1:&#39;</span>, result_1)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;result_2:&#39;</span>, result_2)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;result_3:&#39;</span>, result_3)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;-&#39;</span><span style=color:#f92672>*</span><span style=color:#ae81ff>64</span>)
+
+result_4 <span style=color:#f92672>=</span> example<span style=color:#f92672>.</span>find(<span style=color:#e6db74>&#39;d&#39;</span>) <span style=color:#75715e># is 10 … found at index 10</span>
+result_5 <span style=color:#f92672>=</span> example<span style=color:#f92672>.</span>find(<span style=color:#e6db74>&#39;z&#39;</span>) <span style=color:#75715e># is -1 … not found</span>
+result_6 <span style=color:#f92672>=</span> example<span style=color:#f92672>.</span>find(<span style=color:#e6db74>&#39;or&#39;</span>) <span style=color:#75715e># is 7 … ‘or’ begins at index 7</span>
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;result_4:&#39;</span>, result_4)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;result_5:&#39;</span>, result_5)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;result_6:&#39;</span>, result_6)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;-&#39;</span><span style=color:#f92672>*</span><span style=color:#ae81ff>64</span>)
+
+result_7 <span style=color:#f92672>=</span> example<span style=color:#f92672>.</span>index(<span style=color:#e6db74>&#39;d&#39;</span>) <span style=color:#75715e># is 10 … found at index 10</span>
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;result_7:&#39;</span>, result_7)
+result_8 <span style=color:#f92672>=</span> example<span style=color:#f92672>.</span>index(<span style=color:#e6db74>&#39;or&#39;</span>) <span style=color:#75715e># is 7 … ‘or’ begins at index 7</span>
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;result_8:&#39;</span>, result_8)
+result_9 <span style=color:#f92672>=</span> example<span style=color:#f92672>.</span>index(<span style=color:#e6db74>&#39;z&#39;</span>) <span style=color:#75715e># is an error</span>
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;result_9:&#39;</span>, result_9)
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;-&#39;</span><span style=color:#f92672>*</span><span style=color:#ae81ff>64</span>)
+
+</code></pre></div><pre><code>result_1: 1
+result_2: 3
+result_3: 1
+----------------------------------------------------------------
+result_4: 10
+result_5: -1
+result_6: 7
+----------------------------------------------------------------
+result_7: 10
+result_8: 7
+
+
+
+---------------------------------------------------------------------------
+
+ValueError                                Traceback (most recent call last)
+
+&lt;ipython-input-11-3bf5d49914e1&gt; in &lt;module&gt;
+     22 result_8 = example.index('or') # is 7 … ‘or’ begins at index 7
+     23 print('result_8:', result_8)
+---&gt; 24 result_9 = example.index('z') # is an error
+     25 print('result_9:', result_9)
+     26 print('-'*64)
+
+
+ValueError: substring not found
+</code></pre><h3 id=string-status-methods>String Status Methods</h3><p>These methods will all either return <code>True</code> or <code>False</code>.</p><p><strong><code>string_data.isalnum()</code></strong></p><ul><li>Checks iff alpha+numeric, no spaces or no special characters</li></ul><p><strong><code>string_data.isalpha()</code></strong></p><ul><li>Checks iff alpha, no spaces, no numbers or no special characters</li></ul><p><strong><code>string_data.islower()</code></strong></p><ul><li>Checks iff all characters are lowercased, doesn’t check whitespaces</li></ul><p><strong><code>string_data.isupper()</code></strong></p><ul><li>Check iff all characters are uppercased, doesn’t check whitespaces</li></ul><p><strong><code>string_data.isdigit()</code></strong></p><ul><li>Checks iff numeric, no spaces or no special characters, ignores unicode majority of the time, this is preferred over <code>.isnumeric()</code> and <code>.isdecimal()</code></li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># String Status Methods Example</span>
+
+example1 <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;abc123&#39;</span>
+example2 <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;123&#39;</span>
+example3 <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;HELLO&#39;</span>
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;example1.isalnum():&#39;</span>, example1<span style=color:#f92672>.</span>isalnum()) <span style=color:#75715e># outputs True</span>
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;example1.isalpha():&#39;</span>, example1<span style=color:#f92672>.</span>isalpha()) <span style=color:#75715e># outputs False</span>
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;example3.islower():&#39;</span>, example3<span style=color:#f92672>.</span>islower()) <span style=color:#75715e># outputs False</span>
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;example3.isupper():&#39;</span>, example3<span style=color:#f92672>.</span>isupper()) <span style=color:#75715e># outputs True</span>
+
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;example2.isdigit():&#39;</span>, example2<span style=color:#f92672>.</span>isdigit()) <span style=color:#75715e># outputs True</span>
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;example1.isdigit():&#39;</span>, example1<span style=color:#f92672>.</span>isdigit()) <span style=color:#75715e># outputs False</span>
+</code></pre></div><pre><code>example1.isalnum(): True
+example1.isalpha(): False
+example3.islower(): False
+example3.isupper(): True
+example2.isdigit(): True
+example1.isdigit(): False
+</code></pre><h3 id=string-editing-methods>String Editing Methods</h3><p>These methods will return a new string</p><p><strong><code>string_data.capitalize()</code></strong></p><ul><li>Capitalizes the first letter of a string</li></ul><p><strong><code>string_data.lower()</code></strong></p><ul><li>Returns with all characters in the string lowercased</li></ul><p><strong><code>string_data.upper()</code></strong></p><ul><li>Returns with all characters in the string uppercased</li></ul><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Editing Strings Example</span>
+<span style=color:#75715e># string variables must be updated with new values if you want to modify it</span>
+
+example <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;hello, world!&#39;</span>
+example <span style=color:#f92672>=</span> example<span style=color:#f92672>.</span>capitalize() <span style=color:#75715e># example : ‘Hello, world!’</span>
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;example:&#39;</span>, example)
+
+example <span style=color:#f92672>=</span> example<span style=color:#f92672>.</span>upper() <span style=color:#75715e># example : ‘HELLO, WORLD!’</span>
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;example:&#39;</span>, example)
+
+example <span style=color:#f92672>=</span> example<span style=color:#f92672>.</span>lower() <span style=color:#75715e># example : ‘hello, world!’</span>
+<span style=color:#66d9ef>print</span>(<span style=color:#e6db74>&#39;example:&#39;</span>, example)
+</code></pre></div><pre><code>example: Hello, world!
+example: HELLO, WORLD!
+example: hello, world!
+</code></pre></div></div><br><nav aria-label="Page navigation"><ul class=pagination><li class=page-item><a class="page-link link-info" title="Previous page in courses" href=http://mrparkonline.github.io/courses/strings/07morestringmethods/>&lt;&lt; Previous Lesson</a></li></ul></nav><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script><script type=text/x-mathjax-config>
+            MathJax.Hub.Config({
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                    processEscapes: true,
+                    processEnvironments: true
+                },
+                // Center justify equations in code and markdown cells. Elsewhere
+                // we use CSS to left justify single line equations in code cells.
+                displayAlign: 'center',
+                "HTML-CSS": {
+                    styles: {'.MathJax_Display': {"margin": 0}},
+                    linebreaks: { automatic: true }
+                }
+            });
+        </script></div><footer class="container-fluid text-center text-light bg-dark marginTop" id=site-footer><head><script async defer src=https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js integrity=sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo crossorigin=anonymous></script><script async defer src=https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js integrity=sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/ crossorigin=anonymous></script><link rel=manifest href=/site.webmanifest><script async src="https://www.googletagmanager.com/gtag/js?id=UA-133276379-1"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','UA-133276379-1');</script></head><span>&copy; 2021 <a href=https://www.linkedin.com/in/mrparkonline/ rel=noreferrer target=_blank class="link-light text-decoration-none">Jasper J Park</a></span></footer></body></html>
